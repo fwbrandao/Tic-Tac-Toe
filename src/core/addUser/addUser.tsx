@@ -6,7 +6,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 interface Users {
   userOne: string
-  getFirstUser: (arg: string) => void
+  userTwo: string
+  getUserName: (arg1: string, arg2: string) => void
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const AddUser: FC<Users> = ({ userOne, getFirstUser }) => {
+const AddUser: FC<Users> = ({ userOne, userTwo, getUserName }) => {
   const classes = useStyles();
 
   return (
@@ -33,7 +34,7 @@ const AddUser: FC<Users> = ({ userOne, getFirstUser }) => {
               id="input-with-icon-grid" 
               label="Add user #1" 
               value={userOne}
-              onInput={ e => getFirstUser("test")}
+              onChange={(e) => getUserName('userOne', e.target.value)}
             />
           </Grid>
         </Grid>
@@ -48,6 +49,8 @@ const AddUser: FC<Users> = ({ userOne, getFirstUser }) => {
               role="textFieldUserTwo"
               id="input-with-icon-grid" 
               label="Add user #2" 
+              value={userTwo}
+              onChange={(e) => getUserName('userTwo', e.target.value)}
             />
           </Grid>
         </Grid>
