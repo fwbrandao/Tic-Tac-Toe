@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Box } from '@material-ui/core';
-import AddUser from '../core/addUser';
+import AddUser from '../core/addUser/addUser';
 
 const StartGame: FC = () => {
   const [userOne, setUserOne] = useState("");

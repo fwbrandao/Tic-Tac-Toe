@@ -29,6 +29,7 @@ const AddUser: FC<Users> = ({ userOne, getFirstUser }) => {
           </Grid>
           <Grid item>
             <TextField 
+              role="textFieldUserOne"
               id="input-with-icon-grid" 
               label="Add user #1" 
               value={userOne}
@@ -43,7 +44,11 @@ const AddUser: FC<Users> = ({ userOne, getFirstUser }) => {
             <AccountCircle />
           </Grid>
           <Grid item>
-            <TextField id="input-with-icon-grid" label="Add user #2" />
+            <TextField 
+              role="textFieldUserTwo"
+              id="input-with-icon-grid" 
+              label="Add user #2" 
+            />
           </Grid>
         </Grid>
       </div>
