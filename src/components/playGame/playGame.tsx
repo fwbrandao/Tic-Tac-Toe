@@ -1,23 +1,13 @@
 import React, { FC } from 'react';
-import { Box, Button } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import { Board } from './board';
+import { useGameState } from './gameState';
 
 interface Users {
   userOne: string
   userTwo: string
 }
-
-type Cell = '' | 'X' | 'O';
-type TicTacToeBoard = [
-  [Cell, Cell, Cell],
-  [Cell, Cell, Cell],
-  [Cell, Cell, Cell],
-]
-let boardState: TicTacToeBoard = [
-  ['','',''],
-  ['','',''],
-  ['','','']
-]
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,51 +25,25 @@ const useStyles = makeStyles((theme: Theme) =>
       gridTemplateColumns: 'repeat(3, auto)',
       justifyContent: 'center'
     },
-    cell: {
-      height: '35rem',
-      width: '30rem',
-      backgroundColor: 'transparent',
-      border: 'none',
-      fontWeight: 600,
-      fontSize: '50px'
-    },
-
   }),
 );
 
 const PlayGame: FC<Users> = ({ userOne, userTwo }) => {
   const classes = useStyles();
-  const ROW_COUNT = 3;
-  const COL_COUNT = 3;
 
-
-  function createCell(row: number, col: number, content: Cell = "") {
-    console.log('row', row)
-    console.log('col', col)
-    console.log('content', content)
-
-    return (
-      <>
-        <Button>x</Button>
-      </>
-    );
-  }
-
-  function makeCell() {
-    for (let i = 0; i < ROW_COUNT; i++) {
-      for (let j = 0; j < COL_COUNT; j++) {
-        return createCell(i, j, boardState[i][j])
-      }
-    }
-  }
-
+  const {
+    gameState,
+    current,
+    xIsNext,
+    jumpTo,
+    winner,
+    handleClick,
+  } = useGameState();
   
   return (
     <Box className={classes.root}>
       <Box className={classes.gameBoard}>
-        <div className={classes.cell}>
-          {makeCell()}
-        </div>
+        <Board board={current} onClick={handleClick}/>
       </Box>
     </Box>
   );
