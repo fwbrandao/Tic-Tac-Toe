@@ -2,8 +2,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import PlayGame from './playGame';
 
-test('renders <AppBar /> with Tic-Tac-Toe title', async () => {
-  render(<PlayGame userOne={null} userTwo={null} />);
-  const title = await screen.findByText("Tic Tac Toe")
-  expect(title).toBeInTheDocument();
+test('renders <PlayGame /> with GameBoard component', () => {
+  render(<PlayGame userOne={'null'} userTwo={'null'} />);
+  const gameBoard = screen.getByTestId("gameBoardId")
+  expect(gameBoard).toBeInTheDocument();
+});
+
+test('renders <PlayGame /> with gameScoreBoard component', () => {
+  render(<PlayGame userOne={'null'} userTwo={'null'} />);
+  const gameScoreBoard = screen.getByTestId("gameScoreBoardId")
+  expect(gameScoreBoard).toBeInTheDocument();
 });

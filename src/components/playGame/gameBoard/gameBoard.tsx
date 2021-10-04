@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BoardState } from './gameState';
-import { SquareProps, Square } from './square';
+import { BoardState } from '../gameState/gameState';
+import { CellProps, CellButton } from '../cellButton/cellButton';
 import { Box } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
@@ -21,34 +21,34 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type BoardProps = {
   board: BoardState;
-  onClick: (square: number) => void;
+  onClick: (cell: number) => void;
 };
 
-export function Board({ board, onClick }: BoardProps) {
+export function GameBoard({ board, onClick }: BoardProps) {
   const classes = useStyles();
 
-  const createProps = (square: number): SquareProps => {
+  const createProps = (cell: number): CellProps => {
     return {
-      value: board[square],
-      onClick: () => onClick(square),
+      value: board[cell],
+      onClick: () => onClick(cell),
     };
   };
   return (
     <Box className={classes.col}>
       <Box className={classes.row}>
-        <Square {...createProps(0)} />
-        <Square {...createProps(1)} />
-        <Square {...createProps(2)} />
+        <CellButton {...createProps(0)} />
+        <CellButton {...createProps(1)} />
+        <CellButton {...createProps(2)} />
       </Box>
       <Box className={classes.row}>
-        <Square {...createProps(3)} />
-        <Square {...createProps(4)} />
-        <Square {...createProps(5)} />
+        <CellButton {...createProps(3)} />
+        <CellButton {...createProps(4)} />
+        <CellButton {...createProps(5)} />
       </Box>
       <Box className={classes.row}>
-        <Square {...createProps(6)} />
-        <Square {...createProps(7)} />
-        <Square {...createProps(8)} />
+        <CellButton {...createProps(6)} />
+        <CellButton {...createProps(7)} />
+        <CellButton {...createProps(8)} />
       </Box>
     </Box>
   );

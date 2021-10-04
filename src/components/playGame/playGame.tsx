@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import { Board } from './board';
-import { useGameState } from './gameState';
+import { GameBoard } from './gameBoard/gameBoard';
+import { useGameState } from './gameState/gameState';
+import GameScoreBoard from './gameScoreBoard/gameScoreBoard';
 
 interface Users {
   userOne: string
@@ -32,20 +33,30 @@ const PlayGame: FC<Users> = ({ userOne, userTwo }) => {
   const classes = useStyles();
 
   const {
-    gameState,
+    // gameState,
     current,
-    xIsNext,
-    jumpTo,
+    nextToPlay,
+    // jumpTo,
     winner,
-    handleClick,
+    handleCellClick,
   } = useGameState();
   
   return (
-    <Box className={classes.root}>
-      <Box className={classes.gameBoard}>
-        <Board board={current} onClick={handleClick}/>
+    <>
+      <Paper className={classes.root} elevation={5}>
+        <Box className={classes.gameBoard} data-testid="gameBoardId">
+          <GameBoard 
+            board={current} 
+            onClick={handleCellClick}/>
+        </Box>
+      </Paper>
+      <Box data-testid="gameScoreBoardId">
+        <GameScoreBoard 
+          nextToPlay={nextToPlay}
+          winner={winner}
+        />
       </Box>
-    </Box>
+    </>
   );
 }
 

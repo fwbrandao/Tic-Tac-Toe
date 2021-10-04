@@ -1,6 +1,5 @@
 import * as React from 'react';
-// import styled from 'styled-components';
-import { Value } from './gameState';
+import { Cell } from '../gameState/gameState';
 import { Button, Typography } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
@@ -13,12 +12,12 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }));
 
-export type SquareProps = {
-  value: Value;
+export type CellProps = {
+  value: Cell;
   onClick: () => void;
 };
 
-export function Square(props: SquareProps) {
+export function CellButton(props: CellProps) {
   const classes = useStyles();
 
   return (
