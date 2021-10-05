@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import AddUser from './addUser';
+import AddUser from './addPlayer';
 
 test('renders AddUser with textFields', async () => {
   render(<AddUser userOne={null} getUserName={function (arg: string): void {

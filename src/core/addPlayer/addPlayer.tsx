@@ -5,9 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 interface Users {
-  userOne: string
-  userTwo: string
-  getUserName: (arg1: string, arg2: string) => void
+  playerOne: string
+  playerTwo: string
+  getPlayerName: (arg1: string, arg2: string) => void
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const AddUser: FC<Users> = ({ userOne, userTwo, getUserName }) => {
+const AddPlayers: FC<Users> = ({ playerOne, playerTwo, getPlayerName }) => {
   const classes = useStyles();
 
   return (
@@ -32,9 +32,9 @@ const AddUser: FC<Users> = ({ userOne, userTwo, getUserName }) => {
             <TextField 
               role="textFieldUserOne"
               id="input-with-icon-grid" 
-              label="Add user #1" 
-              value={userOne}
-              onChange={(e) => getUserName('userOne', e.target.value)}
+              label="Add player #1" 
+              value={playerOne}
+              onChange={(e) => getPlayerName('playerOne', e.target.value)}
             />
           </Grid>
         </Grid>
@@ -48,9 +48,9 @@ const AddUser: FC<Users> = ({ userOne, userTwo, getUserName }) => {
             <TextField 
               role="textFieldUserTwo"
               id="input-with-icon-grid" 
-              label="Add user #2" 
-              value={userTwo}
-              onChange={(e) => getUserName('userTwo', e.target.value)}
+              label="Add player #2" 
+              value={playerTwo}
+              onChange={(e) => getPlayerName('playerTwo', e.target.value)}
             />
           </Grid>
         </Grid>
@@ -59,4 +59,4 @@ const AddUser: FC<Users> = ({ userOne, userTwo, getUserName }) => {
   );
 }
 
-export default AddUser;
+export default AddPlayers;

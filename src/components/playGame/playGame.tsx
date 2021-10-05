@@ -6,8 +6,8 @@ import { useGameState } from './gameState/gameState';
 import GameScoreBoard from './gameScoreBoard/gameScoreBoard';
 
 interface Users {
-  userOne: string
-  userTwo: string
+  playerOne: string
+  playerTwo: string
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -29,14 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const PlayGame: FC<Users> = ({ userOne, userTwo }) => {
+const PlayGame: FC<Users> = ({ playerOne, playerTwo }) => {
   const classes = useStyles();
 
   const {
-    // gameState,
+    reasetGame,
     current,
     nextToPlay,
-    // jumpTo,
     winner,
     handleCellClick,
   } = useGameState();
@@ -52,8 +51,11 @@ const PlayGame: FC<Users> = ({ userOne, userTwo }) => {
       </Paper>
       <Box data-testid="gameScoreBoardId">
         <GameScoreBoard 
+        reasetGame={reasetGame}
           nextToPlay={nextToPlay}
           winner={winner}
+          playerOne={playerOne}
+          playerTwo={playerTwo}
         />
       </Box>
     </>

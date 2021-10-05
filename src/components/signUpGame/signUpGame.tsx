@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Paper } from '@material-ui/core';
-import AddUser from '../../core/addUser/addUser';
+import AddPlayers from '../../core/addPlayer/addPlayer';
 import PlayGame from '../playGame/playGame'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,25 +23,25 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const SignUpGame: FC = () => {
   const classes = useStyles();
-  const [userOne, setUserOne] = useState('me');
-  const [userTwo, setUserTwo] = useState('me too');
+  const [playerOne, setPlayerOne] = useState('me');
+  const [playerTwo, setPlayerTwo] = useState('me too');
   const [gameHasPlayers, setGameHasPlayers] = useState(false);
 
-  const getUserName = (user: string, name: any):void => {
-    if (user === 'userOne') {
-      setUserOne(name);
-    } else if (user === 'userTwo') {
-      setUserTwo(name);
+  const getPlayerName = (player: string, name: any):void => {
+    if (player === 'playerOne') {
+      setPlayerOne(name);
+    } else if (player === 'playertwo') {
+      setPlayerTwo(name);
     } else {
       return;
     }
   }
 
-  console.log('user1', userOne)
-  console.log('user2', userTwo)
+  console.log('user1', playerOne)
+  console.log('user2', playerTwo)
 
   const handleGameStart = () => {
-    if (userOne !== null && userTwo !== null) {
+    if (playerOne !== null && playerTwo !== null) {
       setGameHasPlayers(true)
     }
   }
@@ -51,15 +51,15 @@ const SignUpGame: FC = () => {
       {!gameHasPlayers ? (
         <>
           <Paper elevation={3} className={classes.root}>
-            <AddUser 
-              userOne={userOne} 
-              userTwo={userTwo} 
-              getUserName={getUserName}
+            <AddPlayers 
+              playerOne={playerOne} 
+              playerTwo={playerTwo} 
+              getPlayerName={getPlayerName}
             />
           </Paper>
           <Box className={classes.startButton}>
             <Button 
-              variant="contained" 
+              variant="outlined" 
               color="primary"
               onClick={handleGameStart}
             >
@@ -69,8 +69,8 @@ const SignUpGame: FC = () => {
         </>
       ) : (
         <PlayGame 
-          userOne={userOne} 
-          userTwo={userTwo}
+          playerOne={playerOne} 
+          playerTwo={playerTwo}
         />
       )}
     </Box>

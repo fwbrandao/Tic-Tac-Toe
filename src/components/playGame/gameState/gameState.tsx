@@ -62,13 +62,10 @@ export function useGameState() {
     });
   }
 
-  console.log('current before', current);
-
-
-  function jumpTo(step: number) {
+  const reasetGame = () => {
     setGameState({
-      history: gameState.history,
-      step,
+      history: [createBoardState()],
+      step: 0,
     });
   }
 
@@ -78,6 +75,7 @@ export function useGameState() {
     current,
     nextToPlay,
     handleCellClick,
-    jumpTo
+    reasetGame
+    // jumpTo
   };
 }
