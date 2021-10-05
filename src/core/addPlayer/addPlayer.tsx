@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 interface Users {
-  playerOne: string
-  playerTwo: string
+  playerOne: string | null
+  playerTwo: string | null
   getPlayerName: (arg1: string, arg2: string) => void
 }
 

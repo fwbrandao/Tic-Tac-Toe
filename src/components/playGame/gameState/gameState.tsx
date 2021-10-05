@@ -16,7 +16,6 @@ const victories = [
   [2, 4, 6],
 ];
 
-
 function checkForWinner(boardState: BoardState) {
   for (let i = 0; i < victories.length; i++) {
     const [cell1, cell2, cell3] = victories[i];
@@ -28,7 +27,6 @@ function checkForWinner(boardState: BoardState) {
   return null;
 }
 
-
 export type GameState = {
   history: BoardState[],
   step: number,
@@ -39,8 +37,6 @@ export function useGameState() {
     history: [createBoardState()],
     step: 0,
   });
-
-  console.log('gamesatte', gameState);
 
   const current = gameState.history[gameState.step];
   const nextToPlay = (gameState.step % 2) === 0;
@@ -76,6 +72,5 @@ export function useGameState() {
     nextToPlay,
     handleCellClick,
     reasetGame
-    // jumpTo
   };
 }

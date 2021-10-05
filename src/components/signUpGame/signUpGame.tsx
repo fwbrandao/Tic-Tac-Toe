@@ -23,26 +23,27 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const SignUpGame: FC = () => {
   const classes = useStyles();
-  const [playerOne, setPlayerOne] = useState('me');
-  const [playerTwo, setPlayerTwo] = useState('me too');
+  const [playerOne, setPlayerOne] = useState('');
+  const [playerTwo, setPlayerTwo] = useState('');
   const [gameHasPlayers, setGameHasPlayers] = useState(false);
 
   const getPlayerName = (player: string, name: any):void => {
     if (player === 'playerOne') {
       setPlayerOne(name);
-    } else if (player === 'playertwo') {
+    } else if (player === 'playerTwo') {
       setPlayerTwo(name);
     } else {
       return;
     }
   }
 
-  console.log('user1', playerOne)
-  console.log('user2', playerTwo)
-
   const handleGameStart = () => {
-    if (playerOne !== null && playerTwo !== null) {
-      setGameHasPlayers(true)
+    if (
+      (playerOne !== null && playerOne !== '') && 
+      (playerTwo !== null && playerTwo !== '')) {
+      setGameHasPlayers(true);
+    } else {
+      alert('Please add players!')
     }
   }
 

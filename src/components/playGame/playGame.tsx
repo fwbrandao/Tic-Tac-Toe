@@ -6,8 +6,8 @@ import { useGameState } from './gameState/gameState';
 import GameScoreBoard from './gameScoreBoard/gameScoreBoard';
 
 interface Users {
-  playerOne: string
-  playerTwo: string
+  playerOne: string | null
+  playerTwo: string | null
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -51,7 +51,7 @@ const PlayGame: FC<Users> = ({ playerOne, playerTwo }) => {
       </Paper>
       <Box data-testid="gameScoreBoardId">
         <GameScoreBoard 
-        reasetGame={reasetGame}
+          reasetGame={reasetGame}
           nextToPlay={nextToPlay}
           winner={winner}
           playerOne={playerOne}

@@ -3,10 +3,10 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Paper, Typography } from '@material-ui/core';
 
 interface Winner {
-  winner: any | null,
-  nextToPlay: boolean,
-  playerOne: string,
-  playerTwo: string,
+  winner: any | null
+  nextToPlay: boolean
+  playerOne: string | null
+  playerTwo: string | null
   reasetGame: any
 }
 
@@ -29,17 +29,30 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-const GameScoreBoard: FC<Winner> = ({ winner, nextToPlay, playerOne, playerTwo, reasetGame }) => {
+const GameScoreBoard: FC<Winner> = ({ 
+  winner, 
+  nextToPlay, 
+  playerOne, 
+  playerTwo, 
+  reasetGame 
+}) => {
 const classes = useStyles();
 
-console.log('nextToPlay', nextToPlay);
+let currentWinner = null;
+
+if(winner === 'X') {
+  currentWinner = playerOne;
+} 
+if(winner === 'O') {
+  currentWinner = playerTwo
+}
 
 return (
   <Box className={classes.root}>
     <Paper className={classes.scoreBoard}>
       <Box >
         <Typography>
-          {winner ? `Winner is ${winner}` : null}
+          {winner ? `Winner is ${currentWinner}` : null}
         </Typography>
         <Typography>
           Next to play: {nextToPlay === true ? playerOne : playerTwo}
