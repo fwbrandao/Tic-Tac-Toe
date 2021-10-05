@@ -25,7 +25,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     scoreBoard: {
       width: '300px',
-      height: '200px'
+      height: '200px',
+      display: 'grid',
+      justifyContent: 'center',
+      alignItems: 'start',
     },
   }),
 );
@@ -50,14 +53,12 @@ if(winner === 'O') {
 return (
   <Box className={classes.root}>
     <Paper className={classes.scoreBoard}>
-      <Box >
-        <Typography>
-          {winner ? `Winner is ${currentWinner}` : null}
-        </Typography>
-        <Typography>
-          Next to play: {nextToPlay === true ? playerOne : playerTwo}
-        </Typography>
-      </Box>
+      <Typography>
+        {winner ? `Winner is ${currentWinner}` : null}
+      </Typography>
+      <Typography>
+        Next to play: {nextToPlay === true ? playerOne : playerTwo}
+      </Typography>
       <Button 
         variant="outlined" 
         color="primary"

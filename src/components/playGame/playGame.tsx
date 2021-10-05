@@ -3,7 +3,7 @@ import { Box, Paper } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import { GameBoard } from './gameBoard/gameBoard';
 import { useGameState } from './gameState/gameState';
-import GameScoreBoard from './gameScoreBoard/gameScoreBoard';
+import GameScoreBoard from './gameScore/gameScore';
 
 interface Users {
   playerOne: string | null
