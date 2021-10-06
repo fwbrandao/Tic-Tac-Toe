@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { AppBar, Button, Toolbar, Typography }from '@material-ui/core';
+
+interface GamePlayers {
+  setGameHasPlayers: any
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -12,21 +14,31 @@ const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
     },
+    title: {
+      flexGrow: 1,
+    },
   }),
 );
 
-export default function DenseAppBar() {
+const NavBar: FC<GamePlayers> = ({ setGameHasPlayers }) => {
   const classes = useStyles();
+
+  const handleSetGameHasPlayers = () => {
+    setGameHasPlayers(false);
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit">
+          <Typography className={classes.title} variant="h6" color="inherit">
             Tic-Tac-Toe
           </Typography>
+          <Button color="inherit" onClick={handleSetGameHasPlayers}>Change players</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+
+export default NavBar;

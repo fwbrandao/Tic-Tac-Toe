@@ -50,6 +50,8 @@ if(winner === 'O') {
   currentWinner = playerTwo
 }
 
+
+
 return (
   <Box className={classes.root}>
     <Paper className={classes.scoreBoard}>

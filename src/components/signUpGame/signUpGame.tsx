@@ -4,6 +4,11 @@ import { Box, Button, Paper } from '@material-ui/core';
 import AddPlayers from '../../core/addPlayer/addPlayer';
 import PlayGame from '../playGame/playGame'
 
+interface GamaPLayers {
+  gameHasPlayers: boolean
+  setGameHasPlayers: any
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -21,11 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const SignUpGame: FC = () => {
+const SignUpGame: FC<GamaPLayers> = ({ gameHasPlayers, setGameHasPlayers }) => {
   const classes = useStyles();
   const [playerOne, setPlayerOne] = useState('');
   const [playerTwo, setPlayerTwo] = useState('');
-  const [gameHasPlayers, setGameHasPlayers] = useState(false);
 
   const getPlayerName = (player: string, name: any):void => {
     if (player === 'playerOne') {

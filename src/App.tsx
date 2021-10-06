@@ -1,14 +1,16 @@
-import React, { FC } from 'react';
+import React, { useState, FC } from 'react';
 import { Box } from '@material-ui/core';
-import AppBar from './core/appBar/appBar';
+import NavBar from './core/appBar/appBar';
 import SignUpGame from './components/signUpGame/signUpGame';
 
 const App: FC = () => {
 
+  const [gameHasPlayers, setGameHasPlayers] = useState(false);
+
   return (
     <Box role="appContainer">
-      <AppBar />
-      <SignUpGame />
+      <NavBar setGameHasPlayers={setGameHasPlayers}/>
+      <SignUpGame gameHasPlayers={gameHasPlayers} setGameHasPlayers={setGameHasPlayers}/>
     </Box>
   );
 }
