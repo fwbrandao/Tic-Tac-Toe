@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: '4rem',
       padding: '2rem 0',
       textAlign: 'center',
-      backgroundColor: 'oldlace'
+      backgroundColor: 'inherit'
     },
     gameBoard: {
       display: 'grid',
